@@ -4,7 +4,7 @@ public class BBank {
 
     public static void main(String[] args) {
        System.out.println("Toni");
-        
+       System.out.println("David");
     }
     
 }
