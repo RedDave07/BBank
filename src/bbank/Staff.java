@@ -18,7 +18,7 @@ public class Staff {
     private String phoneNumber;
     private String ID;
     private String password;
-    LinkedList clients = new LinkedList();
+    LinkedList donors = new LinkedList();
     
     void registerClient()
     {
