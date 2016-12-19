@@ -1,24 +1,21 @@
 package bbank;
 
-import java.util.Date;
-
 
 public abstract class Blood {
-    //Donor person;
+//    Donor person;
     double amount;
     int haemoglobin;
-    Date date;
+    boolean disease;
+//    Date date;
     
     
-   Blood (double amount, int haemoglobin, Date date){
+   Blood (double amount, int haemoglobin){
        this.amount = amount;
        this.haemoglobin = haemoglobin;
-       this.date = date;
    }
    
-   Blood (double amount, Date date){
+   Blood (double amount){
        this.amount = amount;
-       this.date = date;
    }
     
    public void setNotifier (){
@@ -28,35 +25,30 @@ public abstract class Blood {
 
 class BloodA extends Blood {
     
-    public BloodA(double amount, int haemoglobin, boolean disease, Date date) {
-        super(amount, haemoglobin, date);
+    public BloodA(double amount, int haemoglobin, boolean disease) {
+        super(amount, haemoglobin);
     }
-    public BloodA (double amount, Date date){
-        super(amount, date);
+    public BloodA (double amount){
+        super(amount);
     }
-    
 }
 
 class BloodB extends Blood {
     
-    public BloodB(double amount, int haemoglobin, Date date) {
-        super(amount, haemoglobin, date);
+    public BloodB(double amount, int haemoglobin) {
+        super(amount, haemoglobin);
     }
-    public BloodB(double amount, Date date){
-        super(amount, date);
+    public BloodB(double amount){
+        super(amount);
     }
-
-
 }
 
 class BloodO extends Blood {
     
-    public BloodO(double amount, int haemoglobin, Date date) {
-        super(amount, haemoglobin, date);
+    public BloodO(double amount, int haemoglobin) {
+        super(amount, haemoglobin);
     }
-    public BloodO(double amount, Date date){
-        super(amount, date);
+    public BloodO(double amount){
+        super(amount);
     }
-
-
 }
