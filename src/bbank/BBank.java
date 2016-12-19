@@ -3,7 +3,7 @@ package bbank;
 public class BBank {
 
     public static void main(String[] args) {
-       System.out.println("5OD _|_ ya David");
+       System.out.println("5ODO KOLOKO _|_");
        BloodA a1 = new BloodA(5);
        BloodA a2 = new BloodA(8);
        BloodStock.blood_A.add(a1);
