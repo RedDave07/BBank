@@ -1,5 +1,7 @@
 package bbank;
 
+import java.util.Date;
+
 public class BBank {
 
     public static void main(String[] args) {
@@ -8,8 +10,10 @@ public class BBank {
         
         
        System.out.println("5ODO KOLOKO _|_");
-       BloodA a1 = new BloodA(5);
-       BloodA a2 = new BloodA(8);
+       Date d = new Date();
+       
+//       BloodA a1 = new BloodA(5);
+//       BloodA a2 = new BloodA(8);
        BloodStock.blood_A.add(a1);
        BloodStock.blood_A.add(a2);
        for(int i=0; i<BloodStock.blood_A.size(); i++){
