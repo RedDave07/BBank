@@ -7,6 +7,8 @@ public abstract class Blood {
     int haemoglobin;
     boolean disease;
     
+    
+    
    Blood (double amount, int haemoglobin, boolean disease){
        this.amount = amount;
        this.haemoglobin = haemoglobin;
