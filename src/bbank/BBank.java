@@ -6,24 +6,25 @@ public class BBank {
        Window w = new Window();
        w.setVisible(true);
         
+       //example for running client data base on the recipients list
+       Recipient r1 = new Recipient ("David","01111231072","A");
+       Recipient r2 = new Recipient ("Osama","01220006326","B");
+       ClientDataBase.Recipients_list.add(r1);
+       ClientDataBase.Recipients_list.add(r2);
        
-       BloodA a1 = new BloodA(5);
-       BloodA a2 = new BloodA(8);
-       BloodStock.blood_A.add(a1);
-       BloodStock.blood_A.add(a2);
-       for(int i=0; i<BloodStock.blood_A.size(); i++){
-           System.out.println("Blood A: "+BloodStock.blood_A.get(i).amount);
+       for(int i=0; i<ClientDataBase.Recipients_list.size(); i++){
+           System.out.println(ClientDataBase.Recipients_list.get(i).Name);
        }
-       System.out.println("Stock size "+BloodStock.blood_A.size());
+       System.out.println("Donors size "+ClientDataBase.Recipients_list.size());
        
-       BloodStock.saveListToFile(BloodStock.blood_A, "BloodA");
-       BloodStock.blood_A.clear();
-       System.out.println("Stock size "+BloodStock.blood_A.size());
+       ClientDataBase.saveList(ClientDataBase.Recipients_list, "Recipient");
+       ClientDataBase.Recipients_list.clear();
+       System.out.println("Donors size "+ClientDataBase.Recipients_list.size());
        
-       BloodStock.blood_A = BloodStock.loadListFromFile("BloodA.json");
-       System.out.println("Stock size "+BloodStock.blood_A.size());
-       for(int i=0; i<BloodStock.blood_A.size(); i++){
-           System.out.println("Blood A: "+BloodStock.blood_A.get(i).amount);
+       ClientDataBase.Recipients_list = ClientDataBase.loadList("Recipient.json");
+       System.out.println("Donors size "+ClientDataBase.Recipients_list.size());
+       for(int i=0; i<ClientDataBase.Recipients_list.size(); i++){
+           System.out.println(ClientDataBase.Recipients_list.get(i).Name+" "+ClientDataBase.Recipients_list.get(i).BloodType+" "+ClientDataBase.Recipients_list.get(i).PhoneNum);
        }
        
     }
