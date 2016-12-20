@@ -23,7 +23,7 @@ class Donor extends Client{
     Boolean diseases ;
     Date Last_donate;
     
-    Donor(String N,String PN,String BT,Boolean diseases, Date last_donate){
+    Donor(String N,String PN,String BT,Date last_donate){
     super( N,PN,BT);
     this.Last_donate = last_donate;
     this.diseases=diseases;
