@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package bbank;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -34,6 +36,7 @@ public class RegisterClientWindow extends javax.swing.JFrame {
         BloodTypeLabel = new java.awt.Label();
         BloodTypeTextField = new javax.swing.JTextField();
         RegisterButton = new javax.swing.JButton();
+        BloodTypeTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,10 +71,20 @@ public class RegisterClientWindow extends javax.swing.JFrame {
             }
         });
 
+        BloodTypeTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BloodTypeTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(RegisterButton)
+                .addContainerGap(144, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -82,31 +95,31 @@ public class RegisterClientWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PhoneNumberTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                     .addComponent(NameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BloodTypeTextField, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(BloodTypeTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BloodTypeTextField1))
                 .addGap(67, 67, 67))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(RegisterButton)
-                .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PhoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PhoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BloodTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BloodTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PhoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PhoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BloodTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BloodTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(BloodTypeTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
                 .addComponent(RegisterButton)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -125,13 +138,14 @@ public class RegisterClientWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_BloodTypeTextFieldActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        
-       String name = NameTextField.getText();
-       String phoneNumber = PhoneNumberTextField.getText();
-       
-        
-        
+       Date date = Calendar.getInstance().getTime();  
+       Donor d = new Donor(NameTextField.getText(),PhoneNumberTextField.getText(),
+               BloodTypeTextField.getText(),date);
     }//GEN-LAST:event_RegisterButtonActionPerformed
+
+    private void BloodTypeTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BloodTypeTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BloodTypeTextField1ActionPerformed
 
     
     public static void main(String args[]) {
@@ -172,6 +186,7 @@ public class RegisterClientWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label BloodTypeLabel;
     private javax.swing.JTextField BloodTypeTextField;
+    private javax.swing.JTextField BloodTypeTextField1;
     private java.awt.Label NameLabel;
     private javax.swing.JTextField NameTextField;
     private java.awt.Label PhoneNumberLabel;

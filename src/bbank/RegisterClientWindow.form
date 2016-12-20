@@ -23,6 +23,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+              <Component id="RegisterButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="144" max="32767" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -35,37 +40,38 @@
                   <Component id="PhoneNumberTextField" alignment="1" pref="120" max="32767" attributes="0"/>
                   <Component id="NameTextField" alignment="1" max="32767" attributes="0"/>
                   <Component id="BloodTypeTextField" alignment="1" max="32767" attributes="0"/>
+                  <Component id="BloodTypeTextField1" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
-              <Component id="RegisterButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="144" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="NameLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="NameTextField" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="NameLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="NameTextField" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="PhoneNumberLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="PhoneNumberTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="BloodTypeLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="BloodTypeTextField" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="BloodTypeTextField1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="PhoneNumberLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="PhoneNumberTextField" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="BloodTypeLabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="BloodTypeTextField" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace pref="326" max="32767" attributes="0"/>
               <Component id="RegisterButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="69" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -107,6 +113,11 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegisterButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="BloodTypeTextField1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BloodTypeTextField1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
