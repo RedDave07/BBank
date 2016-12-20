@@ -6,6 +6,7 @@
 package bbank;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -141,6 +142,8 @@ public class RegisterClientWindow extends javax.swing.JFrame {
        Date date = Calendar.getInstance().getTime();  
        Donor d = new Donor(NameTextField.getText(),PhoneNumberTextField.getText(),
                BloodTypeTextField.getText(),date);
+       ClientDataBase.Donors_list.add(d);   
+       JOptionPane.showMessageDialog(null, "The Donor "+d.Name+" is registered Successfully");
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     private void BloodTypeTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BloodTypeTextField1ActionPerformed
