@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.LinkedList;
 
 /**
@@ -66,5 +67,23 @@ public class ClientDataBase {
                 break;   
         }
         return new LinkedList();
+    }
+    
+    Donor search_Donor (String PhoneNum){
+        for(int i=0;i<Donors_list.size();i++){
+            if((Donors_list.get(i)).PhoneNum==PhoneNum){
+                return Donors_list.get(i) ;
+            }
+        }
+        return new Donor();
+    }
+    
+    Recipient search_Recipient (String PhoneNum){
+        for(int i=0;i<Recipients_list.size();i++){
+            if((Recipients_list.get(i)).PhoneNum==PhoneNum){
+                return Recipients_list.get(i) ;
+            }
+        }
+        return new Recipient();
     }
 }
