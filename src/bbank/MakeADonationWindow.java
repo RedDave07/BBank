@@ -127,34 +127,36 @@ public class MakeADonationWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_DonorsNameTextFieldActionPerformed
 
     private void ShowDonorInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowDonorInformationButtonActionPerformed
-//        Type type = new TypeToken<LinkedList>(){}.getType();
-//        LinkedList <Donor> donors = new LinkedList();
-//        Gson gson = new Gson();
-//        try{
-//            donors = new TypeToken<LinkedList<Donor>>() {}.getType();
-//            BufferedReader br = new BufferedReader(new 
-//            FileReader("C:\\Users\\Mina\\Documents\\NetBeansProjects\\BBank\\gson.json"));
-//            donors = gson.fromJson(br, LinkedList.class);
-//            for(int i = 0 ; i<donors.size();i++)
-//            {
-//                Donor d = donors.get(i);
-//                if(d.Name==DonorsNameTextField.getText()&&d.PhoneNum==PhoneNumberTextField.getText())
-//                {
-//                    DonorInformationTextArea.setText("Name:  "+d.Name+"\nPhone Number:  "+d.PhoneNum
-//                            +"\nBlood Type:  "+d.BloodType+"\nLast Donation was:  "+d.Last_donate);
-//                    Date Allowed = new Date();
-//                    Date currentDay = Calendar.getInstance().getTime();
-//                    Allowed.setMonth((currentDay.getMonth()-1+3)%12+1);
-//                    if(Allowed.before(currentDay))
-//                            {
-//                                JOptionPane.showMessageDialog(null, "this Donor Cannot donate");
-//                            }
-//                    break;
-//                }
-//            }
-//        }
-//        catch(Exception e)
-//        {e.printStackTrace();}
+        while(true)
+        {
+        try{
+            String PhoneNumber = PhoneNumberTextField.getText();
+            Donor d = ClientDataBase.search_Donor(PhoneNumber);
+            DonorInformationTextArea.setText("Name : "+d.Name+"\nBlood Type : "+d.BloodType
+            +"\nLast Donation was in : "+d.Last_donate);
+            Date Allowed= new Date();
+            Date currentDay = Calendar.getInstance().getTime();
+            Allowed.setMonth((currentDay.getMonth()-1+3)%12+1);
+                    if(Allowed.before(currentDay))
+                            {
+                                JOptionPane.showMessageDialog(null, "this Donor Cannot donate");
+                            }
+                    break;
+
+            
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Please re-enter the PhoneNumber ");
+        }
+        }
+        
+        
+    
+        
+        
+
+    
     }//GEN-LAST:event_ShowDonorInformationButtonActionPerformed
 
     private void PhoneNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneNumberTextFieldActionPerformed
