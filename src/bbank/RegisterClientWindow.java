@@ -7,6 +7,8 @@ package bbank;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import com.google.gson.Gson;
+import java.io.FileWriter;
 
 /**
  *
@@ -140,9 +142,22 @@ public class RegisterClientWindow extends javax.swing.JFrame {
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
        Date date = Calendar.getInstance().getTime();  
+       System.out.println(date);
+       
        Donor d = new Donor(NameTextField.getText(),PhoneNumberTextField.getText(),
                BloodTypeTextField.getText(),date);
-       ClientDataBase.Donors_list.add(d);   
+       ClientDataBase.Donors_list.add(d);  
+       
+       Gson gson = new Gson();
+       String json=gson.toJson(ClientDataBase.Donors_list);
+       try{
+           FileWriter fw= new FileWriter("C:\\Users\\Mina\\Documents\\NetBeansProjects\\BBank\\gson.json");
+           fw.write(json);
+           fw.close();
+       }
+       catch(Exception e)
+       {e.printStackTrace();}
+       
        JOptionPane.showMessageDialog(null, "The Donor "+d.Name+" is registered Successfully");
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
