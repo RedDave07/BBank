@@ -70,18 +70,19 @@ public class ClientDataBase {
         return new LinkedList();
     }
     
-    Donor search_Donor (String PhoneNum){
+    public static Donor search_Donor (String PhoneNum){
         for(int i=0;i<Donors_list.size();i++){
-            if((Donors_list.get(i)).PhoneNum==PhoneNum){
+            if((Donors_list.get(i)).PhoneNum.equals(PhoneNum)){
                 return Donors_list.get(i) ;
             }
         }
+        System.out.println("msh la2iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiih");
         return new Donor();
     }
     
-    Recipient search_Recipient (String PhoneNum){
+    public static Recipient search_Recipient (String PhoneNum){
         for(int i=0;i<Recipients_list.size();i++){
-            if((Recipients_list.get(i)).PhoneNum==PhoneNum){
+            if((Recipients_list.get(i)).PhoneNum.equals(PhoneNum)){
                 return Recipients_list.get(i) ;
             }
         }
