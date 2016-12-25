@@ -7,6 +7,7 @@ import java.lang.reflect.Type;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Collection;
 
 public class BloodStock {
     public static LinkedList <BloodA> blood_A = new LinkedList();
@@ -37,7 +38,7 @@ public class BloodStock {
         }
     }
 
-    public static void loadListFromFile (LinkedList L, String fileName){
+    public static LinkedList loadListFromFile ( String fileName){
         Gson gson = new Gson ();
         Type type;
         System.out.println("Reading file "+fileName);
@@ -46,7 +47,8 @@ public class BloodStock {
                 try{
                     type =  new TypeToken<LinkedList<BloodA>>() {}.getType();
                     BufferedReader br = new BufferedReader(new FileReader(""+fileName));
-                    L = new LinkedList (gson.fromJson(br, type));
+                    LinkedList L = new LinkedList ((Collection) gson.fromJson(br, type));
+                    return L;
                 }
                 catch(Exception e){
                     e.printStackTrace();
@@ -56,7 +58,8 @@ public class BloodStock {
                 try{
                     type =  new TypeToken<LinkedList<BloodB>>() {}.getType();
                     BufferedReader br = new BufferedReader(new FileReader(""+fileName));
-                    L = new LinkedList (gson.fromJson(br, type));
+                    LinkedList  L = new LinkedList ((Collection) gson.fromJson(br, type));
+                    return L;
                 }
                 catch(Exception e){
                     e.printStackTrace();
@@ -66,12 +69,14 @@ public class BloodStock {
                 try{
                     type =  new TypeToken<LinkedList<BloodO>>() {}.getType();
                     BufferedReader br = new BufferedReader(new FileReader(""+fileName));
-                    L = new LinkedList (gson.fromJson(br, type));
+                    LinkedList L = new LinkedList ((Collection) gson.fromJson(br, type));
+                    return L;
                 }
                 catch(Exception e){
                     e.printStackTrace();
                 }
                 break;    
         }
+        return new LinkedList();
     }
 }
