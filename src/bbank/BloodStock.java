@@ -37,7 +37,7 @@ public class BloodStock {
         }
     }
 
-    public static LinkedList loadListFromFile (String fileName){
+    public static void loadListFromFile (LinkedList L, String fileName){
         Gson gson = new Gson ();
         Type type;
         System.out.println("Reading file "+fileName);
@@ -46,8 +46,7 @@ public class BloodStock {
                 try{
                     type =  new TypeToken<LinkedList<BloodA>>() {}.getType();
                     BufferedReader br = new BufferedReader(new FileReader(""+fileName));
-                    LinkedList <BloodA> L = new LinkedList (gson.fromJson(br, type));
-                    return L;
+                    L = new LinkedList (gson.fromJson(br, type));
                 }
                 catch(Exception e){
                     e.printStackTrace();
@@ -57,8 +56,7 @@ public class BloodStock {
                 try{
                     type =  new TypeToken<LinkedList<BloodB>>() {}.getType();
                     BufferedReader br = new BufferedReader(new FileReader(""+fileName));
-                    LinkedList <BloodB> L = new LinkedList (gson.fromJson(br, type));
-                    return L;
+                    L = new LinkedList (gson.fromJson(br, type));
                 }
                 catch(Exception e){
                     e.printStackTrace();
@@ -68,14 +66,12 @@ public class BloodStock {
                 try{
                     type =  new TypeToken<LinkedList<BloodO>>() {}.getType();
                     BufferedReader br = new BufferedReader(new FileReader(""+fileName));
-                    LinkedList <BloodO> L = new LinkedList (gson.fromJson(br, type));
-                   return L;
+                    L = new LinkedList (gson.fromJson(br, type));
                 }
                 catch(Exception e){
                     e.printStackTrace();
                 }
                 break;    
         }
-        return new LinkedList();
     }
 }
