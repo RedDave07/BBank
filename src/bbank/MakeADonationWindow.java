@@ -45,6 +45,7 @@ public class MakeADonationWindow extends javax.swing.JFrame {
         DonorInformationTextArea = new javax.swing.JTextArea();
         PhoneNumberTextField = new javax.swing.JTextField();
         PhoneNumberLabel = new javax.swing.JLabel();
+        DonateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +77,13 @@ public class MakeADonationWindow extends javax.swing.JFrame {
 
         PhoneNumberLabel.setText("Phone Number");
 
+        DonateButton.setText("Donate");
+        DonateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DonateButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,6 +107,10 @@ public class MakeADonationWindow extends javax.swing.JFrame {
                         .addGap(0, 4, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(DonateButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +128,9 @@ public class MakeADonationWindow extends javax.swing.JFrame {
                 .addComponent(ShowDonorInformationButton)
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(DonateButton)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,11 +151,22 @@ public class MakeADonationWindow extends javax.swing.JFrame {
             Date Allowed= new Date();
             Date currentDay = Calendar.getInstance().getTime();
             Allowed.setMonth((currentDay.getMonth()-1+3)%12+1);
-                    if(Allowed.before(currentDay))
-                            {
-                                JOptionPane.showMessageDialog(null, "this Donor Cannot donate");
-                            }
-                    break;
+            if(Allowed.before(currentDay))
+            {
+                JOptionPane.showMessageDialog(null, "this Donor Cannot donate");
+            }
+            else 
+            {
+                canDonate=true;
+                 JOptionPane.showMessageDialog(null, "Donation was done successfully\n"
+                         + "The Donor Can donate another Time beginning from:\n"+
+                         Allowed);
+                 
+                            
+            }
+            break;
+            
+            
 
             
             
@@ -163,9 +188,21 @@ public class MakeADonationWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PhoneNumberTextFieldActionPerformed
 
+    private void DonateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DonateButtonActionPerformed
+            if(canDonate==false)
+            {
+                 JOptionPane.showMessageDialog(null, "Please check if the Donor is Allowed to donate");
+            }
+            else 
+            {
+                
+            }
+    }//GEN-LAST:event_DonateButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    boolean canDonate=false;
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -199,6 +236,7 @@ public class MakeADonationWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DonateButton;
     private javax.swing.JTextArea DonorInformationTextArea;
     private javax.swing.JLabel DonorsNameLabel;
     private javax.swing.JTextField DonorsNameTextField;
