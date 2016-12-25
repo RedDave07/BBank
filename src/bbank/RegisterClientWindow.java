@@ -146,18 +146,9 @@ public class RegisterClientWindow extends javax.swing.JFrame {
        
        Donor d = new Donor(NameTextField.getText(),PhoneNumberTextField.getText(),
                BloodTypeTextField.getText(),date);
-       ClientDataBase.Donors_list.add(d);  
-       
-       Gson gson = new Gson();
-       String json=gson.toJson(ClientDataBase.Donors_list);
-       try{
-           FileWriter fw= new FileWriter("C:\\Users\\Mina\\Documents\\NetBeansProjects\\BBank\\gson.json");
-           fw.write(json);
-           fw.close();
-       }
-       catch(Exception e)
-       {e.printStackTrace();}
-       
+       ClientDataBase.Donors_list.add(d); 
+       ClientDataBase.saveList(ClientDataBase.Donors_list, "Donor");
+
        JOptionPane.showMessageDialog(null, "The Donor "+d.Name+" is registered Successfully");
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
