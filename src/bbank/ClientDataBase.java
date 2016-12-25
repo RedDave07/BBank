@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
+import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -38,7 +39,7 @@ public class ClientDataBase {
         }
     }
     
-    public static void loadList (LinkedList L, String fileName){
+    public static LinkedList loadList (String fileName){
         Gson gson = new Gson ();
         Type type;
         System.out.println("Reading file "+fileName);
@@ -47,9 +48,10 @@ public class ClientDataBase {
                 try{
                     type = new TypeToken<LinkedList<Donor>>() {}.getType();
                     BufferedReader br = new BufferedReader(new FileReader(""+fileName));
-                    L = new LinkedList (gson.fromJson(br, type));
-                }
-                catch(Exception e){
+                    LinkedList L = new LinkedList ((Collection) gson.fromJson(br, type));
+                    return L;
+                } 
+               catch(Exception e){
                     e.printStackTrace();
                 }
                 break;
@@ -57,13 +59,15 @@ public class ClientDataBase {
                 try{
                     type = new TypeToken<LinkedList<Recipient>>() {}.getType();
                     BufferedReader br = new BufferedReader(new FileReader(""+fileName));
-                    L = new LinkedList (gson.fromJson(br, type));
+                    LinkedList L = new LinkedList ((Collection) gson.fromJson(br, type));
+                    return L;
                 }
                 catch(Exception e){
                     e.printStackTrace();
                 }
                 break;   
         }
+        return new LinkedList();
     }
     
     Donor search_Donor (String PhoneNum){
