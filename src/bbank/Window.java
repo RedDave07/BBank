@@ -27,17 +27,22 @@ public class Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        RegisterClientButton = new javax.swing.JButton();
+        MakeADonationButton = new javax.swing.JButton();
+        RegisterDonorButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
-
-        RegisterClientButton.setText("RegisterClient");
-        RegisterClientButton.addActionListener(new java.awt.event.ActionListener() {
+        MakeADonationButton.setText("Make a Donation");
+        MakeADonationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterClientButtonActionPerformed(evt);
+                MakeADonationButtonActionPerformed(evt);
+            }
+        });
+
+        RegisterDonorButton.setText("RegisterDonor");
+        RegisterDonorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterDonorButtonActionPerformed(evt);
             }
         });
 
@@ -47,29 +52,35 @@ public class Window extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(147, 147, 147)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(RegisterClientButton)
-                    .addComponent(jButton1))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(MakeADonationButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RegisterDonorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addComponent(jButton1)
+                .addComponent(MakeADonationButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(RegisterClientButton)
+                .addComponent(RegisterDonorButton)
                 .addContainerGap(196, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegisterClientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterClientButtonActionPerformed
+    private void RegisterDonorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterDonorButtonActionPerformed
         this.dispose();
         RegisterClientWindow rcw = new RegisterClientWindow();
         rcw.setVisible(true);
-    }//GEN-LAST:event_RegisterClientButtonActionPerformed
+    }//GEN-LAST:event_RegisterDonorButtonActionPerformed
+
+    private void MakeADonationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MakeADonationButtonActionPerformed
+        this.dispose();
+        MakeADonationWindow donate = new MakeADonationWindow();
+        donate.setVisible(true);
+    }//GEN-LAST:event_MakeADonationButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,7 +118,7 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton RegisterClientButton;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton MakeADonationButton;
+    private javax.swing.JButton RegisterDonorButton;
     // End of variables declaration//GEN-END:variables
 }
