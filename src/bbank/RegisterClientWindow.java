@@ -32,14 +32,20 @@ public class RegisterClientWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         NameTextField = new javax.swing.JTextField();
         NameLabel = new java.awt.Label();
         PhoneNumberLabel = new java.awt.Label();
         PhoneNumberTextField = new javax.swing.JTextField();
         BloodTypeLabel = new java.awt.Label();
-        BloodTypeTextField = new javax.swing.JTextField();
         RegisterButton = new javax.swing.JButton();
         BloodTypeTextField1 = new javax.swing.JTextField();
+        BloodTypeComboBox = new javax.swing.JComboBox<>();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,12 +67,6 @@ public class RegisterClientWindow extends javax.swing.JFrame {
 
         BloodTypeLabel.setText("BloodType");
 
-        BloodTypeTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BloodTypeTextFieldActionPerformed(evt);
-            }
-        });
-
         RegisterButton.setText("Register Cient");
         RegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +79,8 @@ public class RegisterClientWindow extends javax.swing.JFrame {
                 BloodTypeTextField1ActionPerformed(evt);
             }
         });
+
+        BloodTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Blood A ", "Blood B", "Blood O", " ", " " }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,8 +100,8 @@ public class RegisterClientWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PhoneNumberTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                     .addComponent(NameTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BloodTypeTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BloodTypeTextField1))
+                    .addComponent(BloodTypeTextField1)
+                    .addComponent(BloodTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
@@ -114,13 +116,13 @@ public class RegisterClientWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PhoneNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PhoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BloodTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BloodTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(PhoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(BloodTypeTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 326, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BloodTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BloodTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
                 .addComponent(RegisterButton)
                 .addGap(34, 34, 34))
         );
@@ -136,16 +138,13 @@ public class RegisterClientWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PhoneNumberTextFieldActionPerformed
 
-    private void BloodTypeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BloodTypeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BloodTypeTextFieldActionPerformed
-
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
        Date date = Calendar.getInstance().getTime();  
        System.out.println(date);
        
        Donor d = new Donor(NameTextField.getText(),PhoneNumberTextField.getText(),
-               BloodTypeTextField.getText(),date);
+               BloodTypeComboBox.getSelectedItem().toString(),date);
+       System.out.println("el blood type ya david howa "+BloodTypeComboBox.getSelectedItem().toString()+"men sadikak mina wagdi");
        ClientDataBase.Donors_list.add(d); 
        ClientDataBase.saveList(ClientDataBase.Donors_list, "Donor");
 
@@ -193,13 +192,15 @@ public class RegisterClientWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> BloodTypeComboBox;
     private java.awt.Label BloodTypeLabel;
-    private javax.swing.JTextField BloodTypeTextField;
     private javax.swing.JTextField BloodTypeTextField1;
     private java.awt.Label NameLabel;
     private javax.swing.JTextField NameTextField;
     private java.awt.Label PhoneNumberLabel;
     private javax.swing.JTextField PhoneNumberTextField;
     private javax.swing.JButton RegisterButton;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -39,8 +51,8 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="PhoneNumberTextField" alignment="1" pref="120" max="32767" attributes="0"/>
                   <Component id="NameTextField" alignment="1" max="32767" attributes="0"/>
-                  <Component id="BloodTypeTextField" alignment="1" max="32767" attributes="0"/>
                   <Component id="BloodTypeTextField1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="BloodTypeComboBox" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
           </Group>
@@ -61,15 +73,15 @@
                           <Component id="PhoneNumberLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="PhoneNumberTextField" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="BloodTypeLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="BloodTypeTextField" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
                   <Component id="BloodTypeTextField1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="326" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="BloodTypeLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="BloodTypeComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="325" max="32767" attributes="0"/>
               <Component id="RegisterButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
           </Group>
@@ -102,11 +114,6 @@
         <Property name="text" type="java.lang.String" value="BloodType"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="BloodTypeTextField">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BloodTypeTextFieldActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="RegisterButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Register Cient"/>
@@ -119,6 +126,22 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BloodTypeTextField1ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="BloodTypeComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="Blood A "/>
+            <StringItem index="1" value="Blood B"/>
+            <StringItem index="2" value="Blood O"/>
+            <StringItem index="3" value=" "/>
+            <StringItem index="4" value=" "/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
