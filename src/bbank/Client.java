@@ -12,10 +12,10 @@ public abstract class Client {
     String PhoneNum ;
     String BloodType;
     
-    Client(String N,String PN,String BT){
-        this.Name=N;
-        this.PhoneNum=PN;
-        this.BloodType=BT;
+    Client(String Name,String phoneNum,String bloodType){
+        this.Name = Name;
+        this.PhoneNum = phoneNum;
+        this.BloodType = bloodType;
     }
     
     Client(){}
@@ -25,8 +25,8 @@ class Donor extends Client{
     
     Date Last_donate;
     
-    Donor(String N,String PN,String BT,Date last_donate){
-        super( N,PN,BT);
+    Donor(String Name,String phoneNum,String bloodType,Date last_donate){
+        super(Name,phoneNum,bloodType);
         this.Last_donate = last_donate;
     
     }
@@ -37,9 +37,9 @@ class Donor extends Client{
 class Recipient extends Client{
     float quantity_needed ;
     
-    Recipient(String N,String PN,String BT,float QN){
-        super( N,PN,BT);
-        this.quantity_needed=QN;
+    Recipient(String Name,String phoneNum,String bloodType,float quantity_needed){
+        super( Name,phoneNum,bloodType);
+        this.quantity_needed = quantity_needed;
     }
     
     Recipient(){}
