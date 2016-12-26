@@ -25,9 +25,21 @@ class Donor extends Client{
     
     Date Last_donate;
     
+//    Donor(String Name,String phoneNum,String bloodType){
+//        super(Name,phoneNum,bloodType);
+//        //this.Last_donate = last_donate;
+//        this.Last_donate=Last_donate-1; 
+//    
+//    }
+    
     Donor(String Name,String phoneNum,String bloodType,Date last_donate){
         super(Name,phoneNum,bloodType);
         this.Last_donate = last_donate;
+    
+    }
+     Donor(String Name,String phoneNum,String bloodType){
+        super(Name,phoneNum,bloodType);
+        //this.Last_donate = last_donate;
     
     }
     
