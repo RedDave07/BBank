@@ -21,6 +21,7 @@ import java.lang.reflect.Type;
  * @author Mina
  */ 
 public class MakeADonationWindow extends javax.swing.JFrame {
+    Donor d ;
 
     /**
      * Creates new form MakeADonationWindow
@@ -46,6 +47,7 @@ public class MakeADonationWindow extends javax.swing.JFrame {
         PhoneNumberTextField = new javax.swing.JTextField();
         PhoneNumberLabel = new javax.swing.JLabel();
         DonateButton = new javax.swing.JButton();
+        InfectedCheckBox = new java.awt.Checkbox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +86,8 @@ public class MakeADonationWindow extends javax.swing.JFrame {
             }
         });
 
+        InfectedCheckBox.setLabel("Infected");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,9 +97,6 @@ public class MakeADonationWindow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(117, 117, 117)
-                                .addComponent(ShowDonorInformationButton))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(DonorsNameLabel)
@@ -103,13 +104,18 @@ public class MakeADonationWindow extends javax.swing.JFrame {
                                 .addGap(94, 94, 94)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(PhoneNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DonorsNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(DonorsNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(117, 117, 117)
+                                .addComponent(ShowDonorInformationButton)))
                         .addGap(0, 4, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(156, 156, 156)
-                .addComponent(DonateButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(InfectedCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DonateButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,9 +134,11 @@ public class MakeADonationWindow extends javax.swing.JFrame {
                 .addComponent(ShowDonorInformationButton)
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(27, 27, 27)
+                .addComponent(InfectedCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
                 .addComponent(DonateButton)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
@@ -145,23 +153,26 @@ public class MakeADonationWindow extends javax.swing.JFrame {
         {
         try{
             String PhoneNumber = PhoneNumberTextField.getText();
-            Donor d = ClientDataBase.search_Donor(PhoneNumber);
+            d = ClientDataBase.search_Donor(PhoneNumber);
             DonorInformationTextArea.setText("Name : "+d.Name+"\nBlood Type : "+d.BloodType
             +"\nLast Donation was in : "+d.Last_donate);
             Date Allowed= new Date();
             Date currentDay = Calendar.getInstance().getTime();
-            Allowed.setMonth((currentDay.getMonth()-1+3)%12+1);
-            if(Allowed.before(currentDay))
+            Allowed.setMonth((d.Last_donate.getMonth()-1+3)%12+1);
+            if(d.Last_donate==null)
+                JOptionPane.showMessageDialog(null, "The donor has never donated before");
+            else if(currentDay.before(Allowed)&&currentDay!=null)
             {
                 JOptionPane.showMessageDialog(null, "this Donor Cannot donate");
             }
-            else 
+            else if(currentDay==null||currentDay.after(Allowed))
             {
                 canDonate=true;
                  JOptionPane.showMessageDialog(null, "Donation was done successfully\n"
                          + "The Donor Can donate another Time beginning from:\n"+
                          Allowed);
-                 
+                // Blood b = new Blood
+                
                             
             }
             break;
@@ -195,8 +206,24 @@ public class MakeADonationWindow extends javax.swing.JFrame {
             }
             else 
             {
+                if(d.BloodType=="A")
+                {
+                    BloodStock.blood_A.add(new BloodA(Calendar.getInstance().getTime(), InfectedCheckBox.getState()));
+                    BloodStock.saveListToFile(BloodStock.blood_A, "BloodA");
+                }
+                else if(d.BloodType=="B")
+                {
+                    BloodStock.blood_B.add(new BloodB(Calendar.getInstance().getTime(), InfectedCheckBox.getState()));
+                    BloodStock.saveListToFile(BloodStock.blood_B, "BloodB");
+                }
+                else 
+                {
+                    BloodStock.blood_O.add(new BloodO(Calendar.getInstance().getTime(), InfectedCheckBox.getState()));
+                    BloodStock.saveListToFile(BloodStock.blood_O, "BloodO");
+                }
                 
             }
+            JOptionPane.showMessageDialog(null, "Donation was successful , Thank you for caring about the patient who need Blood , we Love you , ma3 ta7eyat mina w toni w david");
     }//GEN-LAST:event_DonateButtonActionPerformed
 
     /**
@@ -240,6 +267,7 @@ public class MakeADonationWindow extends javax.swing.JFrame {
     private javax.swing.JTextArea DonorInformationTextArea;
     private javax.swing.JLabel DonorsNameLabel;
     private javax.swing.JTextField DonorsNameTextField;
+    private java.awt.Checkbox InfectedCheckBox;
     private javax.swing.JLabel PhoneNumberLabel;
     private javax.swing.JTextField PhoneNumberTextField;
     private javax.swing.JButton ShowDonorInformationButton;
