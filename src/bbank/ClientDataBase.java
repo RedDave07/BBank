@@ -79,6 +79,15 @@ public class ClientDataBase {
         System.out.println("msh la2iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiih");
         return new Donor();
     }
+    public static int GetDonorIndex (String PhoneNum){
+        for(int i=0;i<Donors_list.size();i++){
+            if((Donors_list.get(i)).PhoneNum.equals(PhoneNum)){
+                return i ;
+            }
+        }
+        System.out.println("msh la2iiiii el index");
+        return -1;
+    }
     
     public static Recipient search_Recipient (String PhoneNum){
         for(int i=0;i<Recipients_list.size();i++){
