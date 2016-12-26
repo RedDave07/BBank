@@ -1,5 +1,7 @@
 package bbank;
 
+import java.util.Date;
+
 public class BBank {
 
     public static void main(String[] args) {
@@ -25,11 +27,20 @@ public class BBank {
 
         Window w = new Window();
         w.setVisible(true);
+//        Donor d = new Donor("hakuna matata" , "01117060271" , "A" , new Date(2012 , 5 , 2));
+//        Donor d2 = new Donor("davidToni" , "01220872006" , "O" , new Date(2013 , 5 , 2));
         ClientDataBase.Donors_list = ClientDataBase.loadList("Donor.json");
+//        ClientDataBase.Donors_list.add(d);
+//        ClientDataBase.Donors_list.add(d2);
+//        ClientDataBase.saveList(ClientDataBase.Donors_list, "Donor");
         ClientDataBase.Recipients_list = ClientDataBase.loadList("Recipient.json");
         BloodStock.blood_A = BloodStock.loadListFromFile("BloodA.json");
         BloodStock.blood_B = BloodStock.loadListFromFile("BloodB.json");
         BloodStock.blood_O = BloodStock.loadListFromFile("BloodO.json");
+        
+        
+        
+        
     }
     
 }
