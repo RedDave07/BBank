@@ -48,7 +48,7 @@ class BloodA extends Blood {
 
 class BloodB extends Blood {
     
-    public BloodB(double amount, int haemoglobin,Date date, boolean disease) {
+    public BloodB(Date date, boolean disease) {
         super(date,disease);
                   if(disease){
         total_B_rejected+=amount ;
@@ -66,7 +66,7 @@ class BloodB extends Blood {
 
 class BloodO extends Blood {
     
-    public BloodO(double amount, int haemoglobin,Date date, boolean disease) {
+    public BloodO(Date date, boolean disease) {
         super(date,disease);
                   if(disease){
         total_O_rejected+=amount ;
