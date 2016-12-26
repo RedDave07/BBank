@@ -143,7 +143,7 @@ public class RegisterClientWindow extends javax.swing.JFrame {
        System.out.println(date);
        
        Donor d = new Donor(NameTextField.getText(),PhoneNumberTextField.getText(),
-               BloodTypeComboBox.getSelectedItem().toString(),date);
+               BloodTypeComboBox.getSelectedItem().toString());
        System.out.println("el blood type ya david howa "+BloodTypeComboBox.getSelectedItem().toString()+"men sadikak mina wagdi");
        ClientDataBase.Donors_list.add(d); 
        ClientDataBase.saveList(ClientDataBase.Donors_list, "Donor");
