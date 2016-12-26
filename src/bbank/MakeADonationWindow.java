@@ -156,9 +156,24 @@ public class MakeADonationWindow extends javax.swing.JFrame {
             d = ClientDataBase.search_Donor(PhoneNumber);
             DonorInformationTextArea.setText("Name : "+d.Name+"\nBlood Type : "+d.BloodType
             +"\nLast Donation was in : "+d.Last_donate);
-            Date Allowed= new Date();
+            
             Date currentDay = Calendar.getInstance().getTime();
-            Allowed.setMonth((d.Last_donate.getMonth()-1+3)%12+1);
+            //Allowed.setMonth((d.Last_donate.getMonth()-1+3)%12+1);
+            int day = d.Last_donate.getDay();
+            int month =-1; 
+            int year =-1;
+            if(d.Last_donate.getMonth()>=10)
+            {
+                year = d.Last_donate.getYear()+3;
+                if(d.Last_donate.getMonth()==10)
+                    month =1 ;
+                else if(d.Last_donate.getMonth()==11)
+                    month = 2 ; 
+                else if(d.Last_donate.getMonth()==12)
+                    month =3 ;
+            }
+            
+            Date Allowed= new Date(year , month , day);
             if(d.Last_donate==null)
                 JOptionPane.showMessageDialog(null, "The donor has never donated before");
             else if(currentDay.before(Allowed)&&currentDay!=null)
@@ -170,7 +185,7 @@ public class MakeADonationWindow extends javax.swing.JFrame {
                 canDonate=true;
                  JOptionPane.showMessageDialog(null, "Donation was done successfully\n"
                          + "The Donor Can donate another Time beginning from:\n"+
-                         Allowed);
+                         Allowed.toString());
                 // Blood b = new Blood
                 
                             
@@ -223,6 +238,10 @@ public class MakeADonationWindow extends javax.swing.JFrame {
                 }
                 
             }
+            String phoneNumber =PhoneNumberTextField.getText();
+            int index =ClientDataBase.GetDonorIndex(phoneNumber);
+            ClientDataBase.Donors_list.get(index).Last_donate=Calendar.getInstance().getTime();
+            ClientDataBase.saveList(ClientDataBase.Donors_list , "Donor");
             JOptionPane.showMessageDialog(null, "Donation was successful , Thank you for caring about the patient who need Blood , we Love you , ma3 ta7eyat mina w toni w david");
     }//GEN-LAST:event_DonateButtonActionPerformed
 
