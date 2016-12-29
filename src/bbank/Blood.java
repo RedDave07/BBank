@@ -8,12 +8,7 @@ public abstract class Blood {
     //int haemoglobin;
     boolean disease;
     Date date;
-    static float total_A_accepted ;
-    static float total_B_accepted ;
-    static float total_O_accepted ;
-    static float total_A_rejected;
-    static float total_B_rejected ;
-    static float total_O_rejected ;
+
     // 7attet hena el amount b 0.4 , a3tazer eni bal3ab f class mesh beta3ti - mina wagdi 
    Blood (Date date,boolean disease){
        this.amount = 0.4;
@@ -35,10 +30,10 @@ class BloodA extends Blood {
     public BloodA(Date date, boolean disease) {
         super(date,disease);
         if(disease){
-        total_A_rejected+=amount ;
+        BloodStock.total_A_rejected+=amount ;
         }
         else
-        total_A_accepted+=amount;
+        BloodStock.total_A_accepted+=amount;
        
     }
     public BloodA (double amount){
@@ -51,10 +46,10 @@ class BloodB extends Blood {
     public BloodB(Date date, boolean disease) {
         super(date,disease);
                   if(disease){
-        total_B_rejected+=amount ;
+        BloodStock.total_B_rejected+=amount ;
         }
         
-           else total_B_accepted+=amount;
+           else BloodStock.total_B_accepted+=amount;
        
     }
     
@@ -69,10 +64,10 @@ class BloodO extends Blood {
     public BloodO(Date date, boolean disease) {
         super(date,disease);
                   if(disease){
-        total_O_rejected+=amount ;
+        BloodStock.total_O_rejected+=amount ;
         }
         
-           else total_O_accepted+=amount;
+           else BloodStock.total_O_accepted+=amount;
        
     }
     
