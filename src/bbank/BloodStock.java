@@ -14,6 +14,13 @@ public class BloodStock {
     public static LinkedList <BloodB> blood_B = new LinkedList();
     public static LinkedList <BloodO> blood_O = new LinkedList();
     
+    public static float total_A_accepted ;
+    public static float total_B_accepted ;
+    public static float total_O_accepted ;
+    public static float total_A_rejected;
+    public static float total_B_rejected ;
+    public static float total_O_rejected ;
+    
     public static void saveListToFile (LinkedList L, String bloodType){
         Gson gson = new Gson ();
         System.out.println("saving to file "+""+bloodType+".json");
