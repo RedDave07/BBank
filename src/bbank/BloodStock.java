@@ -21,12 +21,12 @@ public class BloodStock {
     public static LinkedList  Date_B = new LinkedList();
     public static LinkedList  Date_O = new LinkedList();
     
-    public static float total_A_accepted = 0;
-    public static float total_B_accepted = 0;
-    public static float total_O_accepted = 0;
-    public static float total_A_rejected = 0;
-    public static float total_B_rejected = 0;
-    public static float total_O_rejected = 0;
+    public static double total_A_accepted = 0;
+    public static double total_B_accepted = 0;
+    public static double total_O_accepted = 0;
+    public static double total_A_rejected = 0;
+    public static double total_B_rejected = 0;
+    public static double total_O_rejected = 0;
     
     public static void saveListToFile (LinkedList L, String bloodType){
         Gson gson = new Gson ();
@@ -113,18 +113,24 @@ public class BloodStock {
             else 
                 total_O_accepted += blood_O.get(i).amount;
         }
+        System.out.println("total A accepted: "+ total_A_accepted);
+        System.out.println("total A rejected: "+ total_A_rejected);
+        System.out.println("total B accepted: "+ total_B_accepted);
+        System.out.println("total B rejected: "+ total_B_rejected);
+        System.out.println("total O accepted: "+ total_O_accepted);
+        System.out.println("total O rejected: "+ total_O_rejected);
     }
     
     static void collectGraphData(){
-       float quantity_A=0;
+       double quantity_A=0;
        for (int i=0;i<blood_A.size();i++){
-            quantity_A=(float)(blood_A.get(i)).amount;
+            quantity_A=(blood_A.get(i)).amount;
             for(int j=0;j<blood_A.size();j++){
                 if(blood_A.get(i).date.getDay()==(blood_A.get(j).date.getDay())
                         && blood_A.get(i).date.getMonth()==(blood_A.get(j).date.getMonth())
                         && j>i){
                     i++;
-                    quantity_A= quantity_A+(float)(blood_A.get(j)).amount;
+                    quantity_A= quantity_A+(blood_A.get(j)).amount;
                 }
             }
             Quantity_A.add(quantity_A);
@@ -133,15 +139,15 @@ public class BloodStock {
        for(int k=0 ;k<Quantity_A.size();k++){
            System.out.println("QuantityA : "+Quantity_A.get(k)+" Date : "+Date_A.get(k));
         }
-        float quantity_B=0;
+        double quantity_B=0;
         for (int i=0;i<blood_B.size();i++){
-            quantity_B=(float)(blood_B.get(i)).amount;
+            quantity_B=(blood_B.get(i)).amount;
             for(int j=0;j<blood_B.size();j++){
                 if(blood_B.get(i).date.getDay()==(blood_B.get(j).date.getDay())
                         && blood_B.get(i).date.getMonth()==(blood_B.get(j).date.getMonth())
                         && j>i){
                     i++;
-                    quantity_B= quantity_B+(float)(blood_B.get(j)).amount;
+                    quantity_B= quantity_B+(blood_B.get(j)).amount;
                 }
             }
             Quantity_B.add(quantity_B);
@@ -150,15 +156,15 @@ public class BloodStock {
         for(int k=0 ;k<Quantity_B.size();k++){
             System.out.println("QuantityB : "+Quantity_B.get(k)+" Date : "+Date_B.get(k));
         }
-        float quantity_O=0;
+        double quantity_O=0;
         for (int i=0;i<blood_O.size();i++){
-            quantity_O=(float)(blood_O.get(i)).amount;
+            quantity_O=(blood_O.get(i)).amount;
             for(int j=0;j<blood_O.size();j++){
                 if(blood_O.get(i).date.getDay()==(blood_O.get(j).date.getDay())
                         && blood_O.get(i).date.getMonth()==(blood_O.get(j).date.getMonth())
                         && j>i){
                     i++;
-                    quantity_O= quantity_O+(float)(blood_O.get(j)).amount;
+                    quantity_O= quantity_O+(blood_O.get(j)).amount;
                 }
             }
             Quantity_O.add(quantity_O);
