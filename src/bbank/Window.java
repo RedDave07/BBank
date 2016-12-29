@@ -29,8 +29,11 @@ public class Window extends javax.swing.JFrame {
 
         MakeADonationButton = new javax.swing.JButton();
         RegisterDonorButton = new javax.swing.JButton();
+        CurrentStockButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 200));
+        setResizable(false);
 
         MakeADonationButton.setText("Make a Donation");
         MakeADonationButton.addActionListener(new java.awt.event.ActionListener() {
@@ -39,10 +42,17 @@ public class Window extends javax.swing.JFrame {
             }
         });
 
-        RegisterDonorButton.setText("RegisterDonor");
+        RegisterDonorButton.setText("Register Donor");
         RegisterDonorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterDonorButtonActionPerformed(evt);
+            }
+        });
+
+        CurrentStockButton.setText("Show Current Blood Stock");
+        CurrentStockButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CurrentStockButtonActionPerformed(evt);
             }
         });
 
@@ -51,20 +61,23 @@ public class Window extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addGap(121, 121, 121)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(MakeADonationButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(RegisterDonorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(140, Short.MAX_VALUE))
+                    .addComponent(RegisterDonorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CurrentStockButton))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(48, 48, 48)
                 .addComponent(MakeADonationButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(RegisterDonorButton)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CurrentStockButton)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         pack();
@@ -81,6 +94,11 @@ public class Window extends javax.swing.JFrame {
         MakeADonationWindow donate = new MakeADonationWindow();
         donate.setVisible(true);
     }//GEN-LAST:event_MakeADonationButtonActionPerformed
+
+    private void CurrentStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CurrentStockButtonActionPerformed
+        CurrentStockWindow w = new CurrentStockWindow();
+        w.setVisible(true);
+    }//GEN-LAST:event_CurrentStockButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,6 +136,7 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CurrentStockButton;
     private javax.swing.JButton MakeADonationButton;
     private javax.swing.JButton RegisterDonorButton;
     // End of variables declaration//GEN-END:variables
