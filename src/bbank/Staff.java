@@ -14,11 +14,17 @@ import java.io.FileWriter;
 public class Staff {
     
     
-    private String name;
-    private String phoneNumber;
-    private String ID;
-    private String password;
-    LinkedList donors = new LinkedList();
+    public String name;
+    public String phoneNumber;
+    public String ID;
+    public String password;
+    
+    Staff(String name, String phoneNumber, String ID, String password){
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.ID = ID;
+        this.password = password;
+    }
     
     void registerClient()
     {
