@@ -149,6 +149,9 @@ public class RegisterClientWindow extends javax.swing.JFrame {
        ClientDataBase.saveList(ClientDataBase.Donors_list, "Donor");
 
        JOptionPane.showMessageDialog(null, "The Donor "+d.Name+" is registered Successfully");
+       Window w = new Window();
+       this.dispose();
+       w.setVisible(true);
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     private void BloodTypeTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BloodTypeTextField1ActionPerformed
