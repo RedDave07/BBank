@@ -21,12 +21,27 @@ public class BloodStock {
     public static LinkedList  Date_B = new LinkedList();
     public static LinkedList  Date_O = new LinkedList();
     
+    public static LinkedList  accepted_A = new LinkedList();
+    public static LinkedList  accepted_B = new LinkedList();
+    public static LinkedList  accepted_O = new LinkedList();
+    public static LinkedList  Accepted_Date_A = new LinkedList();
+    public static LinkedList  Accepted_Date_B = new LinkedList();
+    public static LinkedList  Accepted_Date_O = new LinkedList();
+    public static LinkedList  rejected_A = new LinkedList();
+    public static LinkedList  rejected_B = new LinkedList();
+    public static LinkedList  rejected_O = new LinkedList();
+    public static LinkedList  rejected_Date_A = new LinkedList();
+    public static LinkedList  rejected_Date_B = new LinkedList();
+    public static LinkedList  rejected_Date_O = new LinkedList();
+    
     public static double total_A_accepted = 0;
     public static double total_B_accepted = 0;
     public static double total_O_accepted = 0;
     public static double total_A_rejected = 0;
     public static double total_B_rejected = 0;
     public static double total_O_rejected = 0;
+    
+    
     
     public static void saveListToFile (LinkedList L, String bloodType){
         Gson gson = new Gson ();
@@ -222,57 +237,71 @@ public class BloodStock {
        }
     }
     
-//    static void collectGraphData(){
-//       double quantity_A=0;
-//       for (int i=0;i<blood_A.size();i++){
-//            quantity_A=(blood_A.get(i)).amount;
-//            for(int j=0;j<blood_A.size();j++){
-//                if(blood_A.get(i).date.getDay()==(blood_A.get(j).date.getDay())
-//                        && blood_A.get(i).date.getMonth()==(blood_A.get(j).date.getMonth())
-//                        && j>i){
-//                    i++;
-//                    quantity_A= quantity_A+(blood_A.get(j)).amount;
-//                }
-//            }
-//            Quantity_A.add(quantity_A);
-//            Date_A.add(blood_A.get(i).date);
-//        }
-//       for(int k=0 ;k<Quantity_A.size();k++){
-//           System.out.println("QuantityA : "+Quantity_A.get(k)+" Date : "+Date_A.get(k));
-//        }
-//        double quantity_B=0;
-//        for (int i=0;i<blood_B.size();i++){
-//            quantity_B=(blood_B.get(i)).amount;
-//            for(int j=0;j<blood_B.size();j++){
-//                if(blood_B.get(i).date.getDay()==(blood_B.get(j).date.getDay())
-//                        && blood_B.get(i).date.getMonth()==(blood_B.get(j).date.getMonth())
-//                        && j>i){
-//                    i++;
-//                    quantity_B= quantity_B+(blood_B.get(j)).amount;
-//                }
-//            }
-//            Quantity_B.add(quantity_B);
-//            Date_B.add(blood_B.get(i).date);
-//        }
-//        for(int k=0 ;k<Quantity_B.size();k++){
-//            System.out.println("QuantityB : "+Quantity_B.get(k)+" Date : "+Date_B.get(k));
-//        }
-//        double quantity_O=0;
-//        for (int i=0;i<blood_O.size();i++){
-//            quantity_O=(blood_O.get(i)).amount;
-//            for(int j=0;j<blood_O.size();j++){
-//                if(blood_O.get(i).date.getDay()==(blood_O.get(j).date.getDay())
-//                        && blood_O.get(i).date.getMonth()==(blood_O.get(j).date.getMonth())
-//                        && j>i){
-//                    i++;
-//                    quantity_O= quantity_O+(blood_O.get(j)).amount;
-//                }
-//            }
-//            Quantity_O.add(quantity_O);
-//            Date_O.add(blood_O.get(i).date);
-//        }
-//        for(int k=0 ;k<Quantity_O.size();k++){
-//            System.out.println("QuantityO : "+Quantity_O.get(k)+" Date : "+Date_O.get(k));
-//        }
-//    }
+    static void collect2(){
+       float Accepted_quantity_A=0;
+       float Rejected_quantity_A=0;
+   for (int i=0;i<blood_A.size()-1;i++){
+      int j=i+1 ;
+//          Accepted_quantity_A=(float)(blood_A.get(i)).amount;
+//       for(int j=0;j<blood_A.size();j++){
+           if( blood_A.get(i).disease == false){
+       if(blood_A.get(i).date.getDay()==(blood_A.get(j).date.getDay())
+               && blood_A.get(i).date.getMonth()==(blood_A.get(j).date.getMonth())
+               && j>i  )
+       {  
+           i++;
+          Accepted_quantity_A= Accepted_quantity_A+(float)(blood_A.get(i)).amount;
+       
+       }
+       
+       
+       
+       accepted_A.add(Accepted_quantity_A);
+       Accepted_Date_A.add(blood_A.get(i).date);
+           }
+           else if(blood_A.get(i).disease == true){   
+                  if(blood_A.get(i).date.getDay()==(blood_A.get(j).date.getDay())
+               && blood_A.get(i).date.getMonth()==(blood_A.get(j).date.getMonth())
+               && j>i  )
+       {  
+           i++;
+          Rejected_quantity_A= Rejected_quantity_A+(float)(blood_A.get(j)).amount;
+       
+       }
+       
+       
+       
+       rejected_A.add(Rejected_quantity_A);
+       rejected_Date_A.add(blood_A.get(i).date);
+           
+           }
+//           }
+   }
+     for(int k=0 ;k<accepted_A .size();k++){
+       System.out.println("accepted_A : "+accepted_A .get(k)+" Date : "+Accepted_Date_A.get(k));
+       
+   }
+        for(int k=0 ;k<rejected_A.size();k++){
+       System.out.println("rejected_A : "+rejected_A .get(k)+" Date : "+rejected_Date_A.get(k));
+       
+   }
+      for(int l=1;l<rejected_A.size()-1;l++){
+       
+   int m =l-1 ;
+  
+      
+   float Quant2 = ((float)accepted_A.get(l)+(float)accepted_A.get(m));
+    accepted_A .remove(l);
+     accepted_A .add(l,Quant2);
+   
+   }
+           for(int k=0 ;k<accepted_A .size();k++){
+       System.out.println("accepted_A : "+accepted_A .get(k)+" Date : "+Accepted_Date_A.get(k));
+   }
+                for(int k=0 ;k<rejected_A.size();k++){
+       System.out.println("rejected_A : "+rejected_A .get(k)+" Date : "+rejected_Date_A.get(k));
+       
+   }
+    }
+   
 }
