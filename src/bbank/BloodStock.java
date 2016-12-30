@@ -122,56 +122,157 @@ public class BloodStock {
     }
     
     static void collectGraphData(){
+       Quantity_A.clear();
+       Quantity_B.clear();
+       Quantity_O.clear();
+       Date_A.clear();
+       Date_B.clear();
+       Date_O.clear();
+        
        double quantity_A=0;
        for (int i=0;i<blood_A.size();i++){
-            quantity_A=(blood_A.get(i)).amount;
-            for(int j=0;j<blood_A.size();j++){
-                if(blood_A.get(i).date.getDay()==(blood_A.get(j).date.getDay())
-                        && blood_A.get(i).date.getMonth()==(blood_A.get(j).date.getMonth())
-                        && j>i){
-                    i++;
-                    quantity_A= quantity_A+(blood_A.get(j)).amount;
-                }
-            }
-            Quantity_A.add(quantity_A);
-            Date_A.add(blood_A.get(i).date);
-        }
+           quantity_A=(blood_A.get(i)).amount;
+           for(int j=0;j<blood_A.size();j++){
+               if(blood_A.get(i).date.getDay()==(blood_A.get(j).date.getDay())
+                       && blood_A.get(i).date.getMonth()==(blood_A.get(j).date.getMonth())
+                       && j>i){  
+                   i++;
+                   quantity_A= quantity_A+(blood_A.get(j)).amount;
+               }
+           }
+           Quantity_A.add(quantity_A);
+           Date_A.add(blood_A.get(i).date);
+       }
        for(int k=0 ;k<Quantity_A.size();k++){
            System.out.println("QuantityA : "+Quantity_A.get(k)+" Date : "+Date_A.get(k));
-        }
-        double quantity_B=0;
-        for (int i=0;i<blood_B.size();i++){
-            quantity_B=(blood_B.get(i)).amount;
-            for(int j=0;j<blood_B.size();j++){
-                if(blood_B.get(i).date.getDay()==(blood_B.get(j).date.getDay())
-                        && blood_B.get(i).date.getMonth()==(blood_B.get(j).date.getMonth())
-                        && j>i){
-                    i++;
-                    quantity_B= quantity_B+(blood_B.get(j)).amount;
-                }
-            }
-            Quantity_B.add(quantity_B);
-            Date_B.add(blood_B.get(i).date);
-        }
-        for(int k=0 ;k<Quantity_B.size();k++){
-            System.out.println("QuantityB : "+Quantity_B.get(k)+" Date : "+Date_B.get(k));
-        }
-        double quantity_O=0;
-        for (int i=0;i<blood_O.size();i++){
-            quantity_O=(blood_O.get(i)).amount;
-            for(int j=0;j<blood_O.size();j++){
-                if(blood_O.get(i).date.getDay()==(blood_O.get(j).date.getDay())
-                        && blood_O.get(i).date.getMonth()==(blood_O.get(j).date.getMonth())
-                        && j>i){
-                    i++;
-                    quantity_O= quantity_O+(blood_O.get(j)).amount;
-                }
-            }
-            Quantity_O.add(quantity_O);
-            Date_O.add(blood_O.get(i).date);
-        }
-        for(int k=0 ;k<Quantity_O.size();k++){
-            System.out.println("QuantityO : "+Quantity_O.get(k)+" Date : "+Date_O.get(k));
-        }
+       }
+       for(int l=0;l<Quantity_A.size();l++){
+           int m =l-1 ;
+           if (m>=0){
+               double Quant =( (double)Quantity_A.get(l)+(double)Quantity_A.get(m));
+               Quantity_A.remove(l);
+               Quantity_A.add(l,Quant);
+           }
+       }
+       for(int k=0 ;k<Quantity_A.size();k++){
+           System.out.println("QuantityA : "+Quantity_A.get(k)+" Date : "+Date_A.get(k));
+       }
+       double quantity_B=0;
+       for (int i=0;i<blood_B.size();i++){
+           quantity_B=(blood_B.get(i)).amount;
+           for(int j=0;j<blood_B.size();j++){
+               if(blood_B.get(i).date.getDay()==(blood_B.get(j).date.getDay())
+                       && blood_B.get(i).date.getMonth()==(blood_B.get(j).date.getMonth())
+                       && j>i){  
+                   i++;
+                   quantity_B= quantity_B+(blood_B.get(j)).amount;
+               }
+           }
+           Quantity_B.add(quantity_B);
+           Date_B.add(blood_B.get(i).date);
+       }
+       for(int k=0 ;k<Quantity_B.size();k++){
+           System.out.println("QuantityB : "+Quantity_B.get(k)+" Date : "+Date_B.get(k));
+       }
+       for(int l=0;l<Quantity_B.size();l++){
+           int m =l-1 ;
+           if (m>=0){
+               double Quant =( (double)Quantity_B.get(l)+(double)Quantity_B.get(m));
+               Quantity_B.remove(l);
+               Quantity_B.add(l,Quant);
+           }
+       }
+       for(int k=0 ;k<Quantity_B.size();k++){
+           System.out.println("QuantityB : "+Quantity_B.get(k)+" Date : "+Date_B.get(k));
+       }
+       double quantity_O=0;
+       for (int i=0;i<blood_O.size();i++){
+           quantity_O=(blood_O.get(i)).amount;
+           for(int j=0;j<blood_O.size();j++){
+               if(blood_O.get(i).date.getDay()==(blood_O.get(j).date.getDay())
+                       && blood_O.get(i).date.getMonth()==(blood_O.get(j).date.getMonth())
+                       && j>i){  
+                   i++;
+                   quantity_O= quantity_O+(blood_O.get(j)).amount;
+               }
+           }
+           Quantity_O.add(quantity_O);
+           Date_O.add(blood_O.get(i).date);
+       }
+       for(int l=0;l<Quantity_O.size();l++){
+           for(int m =l-1;m>=0;m--){
+               double Quant =( (double)Quantity_O.get(l)+(double)Quantity_O.get(m));
+               Quantity_O.remove(l);
+               Quantity_O.add(l,Quant);
+           }
+       }
+       for(int k=0 ;k<Quantity_O.size();k++){
+           System.out.println("QuantityO : "+Quantity_O.get(k)+" Date : "+Date_O.get(k));
+       }
+       for(int l=0;l<Quantity_O.size();l++){
+           int m =l-1 ;
+           if (m>=0){
+               double Quant =( (double)Quantity_O.get(l)+(double)Quantity_O.get(m));
+               Quantity_O.remove(l);
+               Quantity_O.add(l,Quant);
+           }
+       }
+       for(int k=0 ;k<Quantity_O.size();k++){
+           System.out.println("QuantityO : "+Quantity_O.get(k)+" Date : "+Date_O.get(k));
+       }
     }
+    
+//    static void collectGraphData(){
+//       double quantity_A=0;
+//       for (int i=0;i<blood_A.size();i++){
+//            quantity_A=(blood_A.get(i)).amount;
+//            for(int j=0;j<blood_A.size();j++){
+//                if(blood_A.get(i).date.getDay()==(blood_A.get(j).date.getDay())
+//                        && blood_A.get(i).date.getMonth()==(blood_A.get(j).date.getMonth())
+//                        && j>i){
+//                    i++;
+//                    quantity_A= quantity_A+(blood_A.get(j)).amount;
+//                }
+//            }
+//            Quantity_A.add(quantity_A);
+//            Date_A.add(blood_A.get(i).date);
+//        }
+//       for(int k=0 ;k<Quantity_A.size();k++){
+//           System.out.println("QuantityA : "+Quantity_A.get(k)+" Date : "+Date_A.get(k));
+//        }
+//        double quantity_B=0;
+//        for (int i=0;i<blood_B.size();i++){
+//            quantity_B=(blood_B.get(i)).amount;
+//            for(int j=0;j<blood_B.size();j++){
+//                if(blood_B.get(i).date.getDay()==(blood_B.get(j).date.getDay())
+//                        && blood_B.get(i).date.getMonth()==(blood_B.get(j).date.getMonth())
+//                        && j>i){
+//                    i++;
+//                    quantity_B= quantity_B+(blood_B.get(j)).amount;
+//                }
+//            }
+//            Quantity_B.add(quantity_B);
+//            Date_B.add(blood_B.get(i).date);
+//        }
+//        for(int k=0 ;k<Quantity_B.size();k++){
+//            System.out.println("QuantityB : "+Quantity_B.get(k)+" Date : "+Date_B.get(k));
+//        }
+//        double quantity_O=0;
+//        for (int i=0;i<blood_O.size();i++){
+//            quantity_O=(blood_O.get(i)).amount;
+//            for(int j=0;j<blood_O.size();j++){
+//                if(blood_O.get(i).date.getDay()==(blood_O.get(j).date.getDay())
+//                        && blood_O.get(i).date.getMonth()==(blood_O.get(j).date.getMonth())
+//                        && j>i){
+//                    i++;
+//                    quantity_O= quantity_O+(blood_O.get(j)).amount;
+//                }
+//            }
+//            Quantity_O.add(quantity_O);
+//            Date_O.add(blood_O.get(i).date);
+//        }
+//        for(int k=0 ;k<Quantity_O.size();k++){
+//            System.out.println("QuantityO : "+Quantity_O.get(k)+" Date : "+Date_O.get(k));
+//        }
+//    }
 }
