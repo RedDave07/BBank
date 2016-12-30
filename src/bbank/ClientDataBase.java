@@ -70,7 +70,7 @@ public class ClientDataBase {
         return new LinkedList();
     }
     
-    public static Donor search_Donor (String PhoneNum){
+        public static Donor search_Donor (String PhoneNum){
         for(int i=0;i<Donors_list.size();i++){
             if((Donors_list.get(i)).PhoneNum.equals(PhoneNum)){
                 return Donors_list.get(i) ;
