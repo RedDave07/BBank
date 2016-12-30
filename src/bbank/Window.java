@@ -132,13 +132,11 @@ public class Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegisterDonorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterDonorButtonActionPerformed
-        this.dispose();
         RegisterClientWindow rcw = new RegisterClientWindow();
         rcw.setVisible(true);
     }//GEN-LAST:event_RegisterDonorButtonActionPerformed
 
     private void MakeADonationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MakeADonationButtonActionPerformed
-        this.dispose();
         MakeADonationWindow donate = new MakeADonationWindow();
         donate.setVisible(true);
     }//GEN-LAST:event_MakeADonationButtonActionPerformed
