@@ -30,8 +30,13 @@ public class Window extends javax.swing.JFrame {
         MakeADonationButton = new javax.swing.JButton();
         RegisterDonorButton = new javax.swing.JButton();
         CurrentStockButton = new javax.swing.JButton();
+        QuantityTimeGraphButton = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BBank Main Screen");
         setLocation(new java.awt.Point(300, 200));
         setResizable(false);
 
@@ -56,28 +61,58 @@ public class Window extends javax.swing.JFrame {
             }
         });
 
+        QuantityTimeGraphButton.setText("Show Quantity vs Time");
+        QuantityTimeGraphButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuantityTimeGraphButtonActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B", "O" }));
+
+        jLabel1.setText("For type:");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Select an operation");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(121, 121, 121)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(130, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(MakeADonationButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(RegisterDonorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CurrentStockButton))
-                .addContainerGap(118, Short.MAX_VALUE))
+                    .addComponent(CurrentStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(QuantityTimeGraphButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(25, 25, 25)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(MakeADonationButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(RegisterDonorButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CurrentStockButton)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(QuantityTimeGraphButton)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
@@ -99,6 +134,12 @@ public class Window extends javax.swing.JFrame {
         CurrentStockWindow w = new CurrentStockWindow();
         w.setVisible(true);
     }//GEN-LAST:event_CurrentStockButtonActionPerformed
+
+    private void QuantityTimeGraphButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuantityTimeGraphButtonActionPerformed
+        QuantityTimeGraphWindow.SelectedItem = jComboBox2.getSelectedIndex();
+        QuantityTimeGraphWindow w = new QuantityTimeGraphWindow();
+        w.setVisible(true);
+    }//GEN-LAST:event_QuantityTimeGraphButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +179,10 @@ public class Window extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CurrentStockButton;
     private javax.swing.JButton MakeADonationButton;
+    private javax.swing.JButton QuantityTimeGraphButton;
     private javax.swing.JButton RegisterDonorButton;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
