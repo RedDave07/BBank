@@ -151,20 +151,67 @@ public class MakeADonationWindow extends javax.swing.JFrame {
     private void ShowDonorInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowDonorInformationButtonActionPerformed
         while(true)
         {
-        try{
-            String PhoneNumber = PhoneNumberTextField.getText();
-            d = ClientDataBase.search_Donor(PhoneNumber);
+            String PhoneNumber;
+            while(true)
+            {
+                try{
+                    PhoneNumber = PhoneNumberTextField.getText();
+                    break;
+                }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Please re-enter the PhoneNumber ");
+            System.out.println(e.toString());
+        }
+            }
+            try{
+                System.out.println("bey5ali el pointer d yeshawer 3ala el donor eli bene3melo show info");
+                d = ClientDataBase.search_Donor(PhoneNumber);
+                if(d.Name.equals("null"))
+                    JOptionPane.showMessageDialog(null, "This Donor is not registered yet");
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null, "This Donor is not registered yet");
+                this.dispose();
+                Window w = new Window();
+                w.setVisible(true);
+                return ;
+            }
+            
+            
+            
             DonorInformationTextArea.setText("Name : "+d.Name+"\nBlood Type : "+d.BloodType
             +"\nLast Donation was in : "+d.Last_donate);
             
             Date currentDay = Calendar.getInstance().getTime();
             //Allowed.setMonth((d.Last_donate.getMonth()-1+3)%12+1);
-            int day = d.Last_donate.getDay();
+            int day=0;
             int month =-1; 
             int year =-1;
+            int CurrentMonth=0;
+            try{
+                System.out.println(d.Last_donate.getDate()+" THIS IS THE DAY d.lastdonate.getDay()");
+                        
+                // ya3ni law el donor lam yatabara3 abl kda hay5osh fel catch
+                 day = d.Last_donate.getDate();
+                 //d.Last_donate=currentDay;
+                 CurrentMonth = d.Last_donate.getMonth();
+            }
+            catch(Exception e)
+            {
+                System.out.println(e.toString());
+                JOptionPane.showMessageDialog(null, "The donor has never donated before");
+                System.out.println("el YOM HOWA"+day);
+                canDonate=true;
+                return;
+                
+            }
+            
+            
             if(d.Last_donate.getMonth()>=10)
             {
-                year = d.Last_donate.getYear()+3;
+                year = d.Last_donate.getYear()+1;
                 if(d.Last_donate.getMonth()==10)
                     month =1 ;
                 else if(d.Last_donate.getMonth()==11)
@@ -172,20 +219,27 @@ public class MakeADonationWindow extends javax.swing.JFrame {
                 else if(d.Last_donate.getMonth()==12)
                     month =3 ;
             }
+            else
+            {
+                month=d.Last_donate.getMonth()+3;
+                
+            }
+            System.out.println("year "+year+"month "+month +"day "+day);
             
             Date Allowed= new Date(year , month , day);
-            if(d.Last_donate==null)
-                JOptionPane.showMessageDialog(null, "The donor has never donated before");
-            else if(currentDay.before(Allowed)&&currentDay!=null)
+            
+            System.out.println("hay5osh el if condition");
+            if(currentDay.before(Allowed)&&currentDay!=null)
             {
+                System.out.println("da5al fel if condition");
                 JOptionPane.showMessageDialog(null, "this Donor Cannot donate");
             }
-            else if(currentDay==null||currentDay.after(Allowed))
+            else if(d.Last_donate==null||currentDay.after(Allowed))
             {
+                System.out.println("da5al fel else if condition");
                 canDonate=true;
-                 JOptionPane.showMessageDialog(null, "Donation was done successfully\n"
-                         + "The Donor Can donate another Time beginning from:\n"+
-                         Allowed.toString());
+                 JOptionPane.showMessageDialog(null, "The Donor Can donate another Time beginning from:\n"+
+                         Allowed.toString()+"\nIf you want to Donate please click on the Donate button bellow");
                 // Blood b = new Blood
                 
                             
@@ -193,13 +247,10 @@ public class MakeADonationWindow extends javax.swing.JFrame {
             break;
             
             
-
+        
             
             
-        }catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null, "Please re-enter the PhoneNumber ");
-        }
+        
         }
         
         
@@ -221,28 +272,36 @@ public class MakeADonationWindow extends javax.swing.JFrame {
             }
             else 
             {
-                if(d.BloodType=="A")
+                System.out.println(d.BloodType);
+                if(d.BloodType.equals("Blood A"))
                 {
+                    System.out.println("da5al gowa el save beta3 bloodA");
                     BloodStock.blood_A.add(new BloodA(Calendar.getInstance().getTime(), InfectedCheckBox.getState()));
                     BloodStock.saveListToFile(BloodStock.blood_A, "BloodA");
                 }
-                else if(d.BloodType=="B")
+                else if(d.BloodType.equals("Blood B"))
                 {
+                    System.out.println("da5al gowa el save beta3 bloodB");
                     BloodStock.blood_B.add(new BloodB(Calendar.getInstance().getTime(), InfectedCheckBox.getState()));
                     BloodStock.saveListToFile(BloodStock.blood_B, "BloodB");
                 }
-                else 
+                else
                 {
+                    System.out.println("da5al gowa el save beta3 bloodO");
                     BloodStock.blood_O.add(new BloodO(Calendar.getInstance().getTime(), InfectedCheckBox.getState()));
                     BloodStock.saveListToFile(BloodStock.blood_O, "BloodO");
                 }
-                
-            }
-            String phoneNumber =PhoneNumberTextField.getText();
+                String phoneNumber =PhoneNumberTextField.getText();
             int index =ClientDataBase.GetDonorIndex(phoneNumber);
             ClientDataBase.Donors_list.get(index).Last_donate=Calendar.getInstance().getTime();
             ClientDataBase.saveList(ClientDataBase.Donors_list , "Donor");
             JOptionPane.showMessageDialog(null, "Donation was successful , Thank you for caring about the patient who need Blood , we Love you , ma3 ta7eyat mina w toni w david");
+            this.dispose();
+            Window w = new Window();
+            w.setVisible(true);
+                
+            }
+            
     }//GEN-LAST:event_DonateButtonActionPerformed
 
     /**
