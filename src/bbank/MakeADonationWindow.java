@@ -49,7 +49,7 @@ public class MakeADonationWindow extends javax.swing.JFrame {
         DonateButton = new javax.swing.JButton();
         InfectedCheckBox = new java.awt.Checkbox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         DonorsNameLabel.setText("Donor's Name");
 
