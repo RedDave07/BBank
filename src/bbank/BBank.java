@@ -38,8 +38,52 @@ public class BBank {
         BloodStock.blood_B = BloodStock.loadListFromFile("BloodB.json");
         BloodStock.blood_O = BloodStock.loadListFromFile("BloodO.json");
         
-        
-        
+        Date d = new Date (2015, 3, 10);
+        Date d1 = new Date (2015, 3, 10);
+        Date d2 = new Date (2015, 3, 10);
+        Date d3 = new Date (2015, 3, 12);
+        Date d4 = new Date (2015, 3, 12);
+        Date d5 = new Date (2015, 3, 13);
+
+        BloodA b =new BloodA (d, false);
+        BloodStock.blood_A.add(b);
+        BloodA b1 =new BloodA (d1, false);
+        BloodStock.blood_A.add(b1);
+        BloodA b2 =new BloodA (d2, false);
+        BloodStock.blood_A.add(b2);
+        BloodA b3 =new BloodA (d3, false);
+        BloodStock.blood_A.add(b3);
+        BloodA b4 =new BloodA (d4, false);
+        BloodStock.blood_A.add(b4);
+        BloodA b5 =new BloodA (d5, false);
+        BloodStock.blood_A.add(b5);
+
+        BloodB a =new BloodB (d, false);
+        BloodStock.blood_B.add(a);
+        BloodB a1 =new BloodB (d1, false);
+        BloodStock.blood_B.add(a1);
+        BloodB a2 =new BloodB (d2, false);
+        BloodStock.blood_B.add(a2);
+        BloodB a3 =new BloodB (d3, false);
+        BloodStock.blood_B.add(a3);
+        BloodB a4 =new BloodB (d4, false);
+        BloodStock.blood_B.add(a4);
+        BloodB a5 =new BloodB (d5, false);
+        BloodStock.blood_B.add(a5);
+
+        BloodO O =new BloodO (d, false);
+        BloodStock.blood_O.add(O);
+        BloodO O1 =new BloodO (d1, false);
+        BloodStock.blood_O.add(O1);
+        BloodO O2 =new BloodO (d2, false);
+        BloodStock.blood_O.add(O2);
+        BloodO O3 =new BloodO (d3, false);
+        BloodStock.blood_O.add(O3);
+        BloodO O4 =new BloodO (d4, false);
+        BloodStock.blood_O.add(O4);
+        BloodO O5 =new BloodO (d5, false);
+        BloodStock.blood_O.add(O5);
+//        BloodStock.collectGraphData();
         
     }
     
