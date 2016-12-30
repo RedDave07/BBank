@@ -1,10 +1,13 @@
 package bbank;
 
 import java.util.Date;
+import java.util.LinkedList;
 
 public class BBank {
-
+    public static LinkedList <Staff> allStaff = new LinkedList();
     public static void main(String[] args) {
+        Staff staff = new Staff("david","123","1","123");
+        allStaff.add(staff);
 //       Recipient r1 = new Recipient ("David","01111231072","A",55);
 //       Recipient r2 = new Recipient ("Osama","01220006326","B",66);
 //       ClientDataBase.Recipients_list.add(r1);
@@ -24,9 +27,10 @@ public class BBank {
 //       for(int i=0; i<ClientDataBase.Recipients_list.size(); i++){
 //           System.out.println(ClientDataBase.Recipients_list.get(i).Name);
 //       }
-
-        Window w = new Window();
+        LoginWindow w = new LoginWindow ();
         w.setVisible(true);
+//        Window w = new Window();
+//        w.setVisible(true);
 //        Donor d = new Donor("hakuna matata" , "01117060271" , "A" , new Date(2012 , 5 , 2));
 //        Donor d2 = new Donor("davidToni" , "01220872006" , "O" , new Date(2013 , 5 , 2));
         ClientDataBase.Donors_list = ClientDataBase.loadList("Donor.json");
@@ -45,11 +49,11 @@ public class BBank {
         Date d4 = new Date (2015, 3, 12);
         Date d5 = new Date (2015, 3, 13);
 
-        BloodA b =new BloodA (d, false);
+        BloodA b =new BloodA (d, true);
         BloodStock.blood_A.add(b);
         BloodA b1 =new BloodA (d1, false);
         BloodStock.blood_A.add(b1);
-        BloodA b2 =new BloodA (d2, false);
+        BloodA b2 =new BloodA (d2, true);
         BloodStock.blood_A.add(b2);
         BloodA b3 =new BloodA (d3, false);
         BloodStock.blood_A.add(b3);
@@ -83,8 +87,8 @@ public class BBank {
         BloodStock.blood_O.add(O4);
         BloodO O5 =new BloodO (d5, false);
         BloodStock.blood_O.add(O5);
-//        BloodStock.collectGraphData();
-        
+        BloodStock.collectGraphData();
+        BloodStock.collect2();
     }
     
 }
