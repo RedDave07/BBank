@@ -29,25 +29,25 @@ public class QuantityTimeGraphWindow extends javax.swing.JFrame {
         initComponents();
         
         DefaultCategoryDataset dataset = new DefaultCategoryDataset ();
-        BloodStock.collectGraphData();
+        BloodStock.collectGraphData(SelectedItem);
         String title = "Quantity vs Time Graph";
         switch (SelectedItem){
             case 0:
                 title = "Quantity vs Time Graph for Blood type A";
-                for(int i=0; i<BloodStock.Quantity_A.size(); i++){
-                    dataset.addValue(((double)BloodStock.Quantity_A.get(i)), "", ""+((Date)BloodStock.Date_A.get(i)).getDate()+"/"+(((Date)BloodStock.Date_A.get(i)).getMonth()+1));
+                for(int i=0; i<BloodStock.QuantityGraph.size(); i++){
+                    dataset.addValue(((double)BloodStock.QuantityGraph.get(i)), "", ""+((Date)BloodStock.DateGraph.get(i)).getDate()+"/"+(((Date)BloodStock.DateGraph.get(i)).getMonth()+1));
                 }
                 break;
             case 1:
                 title = "Quantity vs Time Graph for Blood type B";
-                for(int i=0; i<BloodStock.Quantity_B.size(); i++){
-                    dataset.addValue(((double)BloodStock.Quantity_B.get(i)), "", ""+((Date)BloodStock.Date_B.get(i)).getDate()+"/"+(((Date)BloodStock.Date_B.get(i)).getMonth()+1));
+                for(int i=0; i<BloodStock.QuantityGraph.size(); i++){
+                    dataset.addValue(((double)BloodStock.QuantityGraph.get(i)), "", ""+((Date)BloodStock.DateGraph.get(i)).getDate()+"/"+(((Date)BloodStock.DateGraph.get(i)).getMonth()+1));
                 }
                 break;
             case 2:
                 title = "Quantity vs Time Graph for Blood type O";
-                for(int i=0; i<BloodStock.Quantity_O.size(); i++){
-                    dataset.addValue(((double)BloodStock.Quantity_O.get(i)), "", ""+((Date)BloodStock.Date_O.get(i)).getDate()+"/"+(((Date)BloodStock.Date_O.get(i)).getMonth()+1));
+                for(int i=0; i<BloodStock.QuantityGraph.size(); i++){
+                    dataset.addValue(((double)BloodStock.QuantityGraph.get(i)), "", ""+((Date)BloodStock.DateGraph.get(i)).getDate()+"/"+(((Date)BloodStock.DateGraph.get(i)).getMonth()+1));
                 }
                 break;
         }
