@@ -87,7 +87,9 @@ public class BBank {
         BloodStock.blood_O.add(O4);
         BloodO O5 =new BloodO (d5, false);
         BloodStock.blood_O.add(O5);
-        BloodStock.collectGraphData();
+        BloodStock.collectGraphData(0);
+        BloodStock.collectGraphData(1);
+        BloodStock.collectGraphData(2);
         BloodStock.collect2();
     }
     
