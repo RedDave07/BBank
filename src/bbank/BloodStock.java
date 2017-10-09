@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Collection;
+import java.util.Date;
 
 public class BloodStock {
     public static LinkedList <BloodA> blood_A = new LinkedList();
@@ -309,4 +310,63 @@ public class BloodStock {
    }
     }
    
+    static void collect3()
+   {
+       int LinkedList_index =0; 
+       double quantiyAcc =0; 
+       double quatityRej = 0 ; 
+       Date d = new Date(blood_A.get(0).date.getYear(),blood_A.get(0).date.getMonth(),blood_A.get(0).date.getDate());
+       
+       for(int i = 0 ; i<blood_A.size();i++)
+       {
+           BloodA BA = blood_A.get(i);
+           if(blood_A.get(i).disease==false)
+               quantiyAcc++;
+           else quatityRej++;
+           if(i+1<blood_A.size())
+           {
+               if(d.getDate()==blood_A.get(i+1).date.getDate())
+               continue;
+           
+                else
+                {
+                    accepted_A.add(LinkedList_index , quantiyAcc);
+                    rejected_A.add(LinkedList_index , quatityRej);
+                    Accepted_Date_A.add(LinkedList_index, d);
+                    rejected_Date_A.add(LinkedList_index, d);
+                
+                    
+                    d.setYear(blood_A.get(i+1).date.getYear());
+                    d.setMonth(blood_A.get(i+1).date.getMonth());
+                    d.setDate(blood_A.get(i+1).date.getDate());
+     //               quantiyAcc=0;
+     //               quatityRej=0;
+                    LinkedList_index++;
+                }
+                    
+               
+           }
+           else
+           {
+               accepted_A.add(LinkedList_index , quantiyAcc);
+               System.out.println("MINA "+accepted_A.get(LinkedList_index));
+               rejected_A.add(LinkedList_index , quatityRej);
+               System.out.println("MINA "+rejected_A.get(LinkedList_index));
+               Accepted_Date_A.add(LinkedList_index, d);
+               System.out.println("MINA "+Accepted_Date_A.get(LinkedList_index));
+               rejected_Date_A.add(LinkedList_index, d);
+               System.out.println("MINA "+rejected_Date_A.get(LinkedList_index));
+           }
+               
+           
+       }
+          for(int k=0 ;k<accepted_A.size();k++){
+       System.out.println("accepted_A : "+accepted_A .get(k)+" Date : "+Accepted_Date_A.get(k));
+       
+   }
+        for(int k=0 ;k<rejected_A.size();k++){
+       System.out.println("rejected_A : "+rejected_A .get(k)+" Date : "+rejected_Date_A.get(k));
+   }
+}
+    
 }

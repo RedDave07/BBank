@@ -43,11 +43,11 @@ public class BBank {
         BloodStock.blood_O = BloodStock.loadListFromFile("BloodO.json");
         
         Date d = new Date (2015, 3, 10);
-        Date d1 = new Date (2015, 3, 10);
-        Date d2 = new Date (2015, 3, 10);
+        Date d1 = new Date (2015, 3, 11);
+        Date d2 = new Date (2015, 3, 12);
         Date d3 = new Date (2015, 3, 12);
-        Date d4 = new Date (2015, 3, 12);
-        Date d5 = new Date (2015, 3, 13);
+        Date d4 = new Date (2015, 3, 14);
+        Date d5 = new Date (2015, 3, 14);
 
         BloodA b =new BloodA (d, true);
         BloodStock.blood_A.add(b);
@@ -90,7 +90,7 @@ public class BBank {
         BloodStock.collectGraphData(0);
         BloodStock.collectGraphData(1);
         BloodStock.collectGraphData(2);
-        BloodStock.collect2();
+        BloodStock.collect3();
     }
     
 }
